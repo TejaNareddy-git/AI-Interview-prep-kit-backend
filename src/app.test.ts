@@ -1,23 +1,26 @@
 import assert from "node:assert/strict";
-import { once } from "node:events";
-import { createServer } from "node:http";
 import { test } from "node:test";
 import { app } from "./app.js";
+import { withListeningApp } from "./testing/listen.js";
 
 test("GET /api/health returns ok", async () => {
-  const server = createServer(app);
-  server.listen(0, "127.0.0.1");
-  await once(server, "listening");
-
-  try {
-    const address = server.address();
-    assert.ok(address && typeof address === "object");
-
-    const response = await fetch(`http://127.0.0.1:${address.port}/api/health`);
+  await withListeningApp(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/health`);
     assert.equal(response.status, 200);
     assert.deepEqual(await response.json(), { status: "ok" });
-  } finally {
-    server.close();
-    await once(server, "close");
-  }
+  });
+});
+
+test("unknown API routes return JSON 404", async () => {
+  await withListeningApp(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/does-not-exist`);
+    assert.equal(response.status, 404);
+    assert.match(response.headers.get("content-type") ?? "", /application\/json/);
+    assert.deepEqual(await response.json(), {
+      error: {
+        code: "NOT_FOUND",
+        message: "Not found",
+      },
+    });
+  });
 });

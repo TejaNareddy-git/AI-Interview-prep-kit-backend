@@ -1,9 +1,6 @@
 import type { RequestHandler } from "express";
+import { AppError } from "../utils/appError.js";
 
-export const notFoundHandler: RequestHandler = (_req, res) => {
-  res.status(404).json({
-    error: {
-      message: "Not found",
-    },
-  });
+export const notFoundHandler: RequestHandler = (_req, _res, next) => {
+  next(new AppError(404, "NOT_FOUND", "Not found"));
 };

@@ -1,0 +1,40 @@
+{
+  "name": "ai-interview-prep-kit-backend",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000A\u0000I\u0000-\u0000I\u0000n\u0000t\u0000e\u0000r\u0000v\u0000i\u0000e\u0000w\u0000-\u0000p\u0000r\u0000e\u0000p\u0000-\u0000k\u0000i\u0000t\u0000-\u0000b\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TejaNareddy-git/AI-Interview-prep-kit-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TejaNareddy-git/AI-Interview-prep-kit-backend/issues"
+  },
+  "homepage": "https://github.com/TejaNareddy-git/AI-Interview-prep-kit-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
